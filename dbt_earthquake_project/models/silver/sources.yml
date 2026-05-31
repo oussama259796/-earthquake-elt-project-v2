@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: bronze_layer
+    database: gen-lang-client-0714034626
+    schema: bronze
+    tables:
+      - name: raw_earthquakes
