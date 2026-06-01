@@ -1,0 +1,24 @@
+# models/schema.yml
+version: 2
+
+models:
+  - name: stg_earthquakes
+    columns:
+      - name: quake_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['automatic', 'reviewed', 'deleted']
+  - name: fct_earthquakes
+    columns:
+      - name: quake_id
+        tests:
+          - unique
+          - not_null
+      - name: magnitude_category
+        tests:
+          - accepted_values:
+              values: ['micro', 'minor', 'moderate', 'strong', 'major', 'great']

@@ -83,7 +83,8 @@ quality_checked AS(
         source_url,
         ingested_at
         FROM parsed
-        WHERE quake_id IS NOT NULL
+        WHERE quake_id IS NOT NULL 
+        AND magnitude IS NOT NULL
 )
 
 SELECT * FROM quality_checked
