@@ -1,4 +1,3 @@
-# models/schema.yml
 version: 2
 
 models:
@@ -12,6 +11,7 @@ models:
         tests:
           - accepted_values:
               values: ['automatic', 'reviewed', 'deleted']
+
   - name: fct_earthquakes
     columns:
       - name: quake_id

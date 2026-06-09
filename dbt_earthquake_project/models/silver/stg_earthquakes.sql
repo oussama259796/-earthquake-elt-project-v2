@@ -20,8 +20,7 @@ unnested AS(
         ingested_at,
         feature
     FROM source,
-    UNNEST(JSON_QUERY_ARRAY(raw_payload, '$.features'))AS feature
-),
+    UNNEST(JSON_QUERY_ARRAY(SAFE.PARSE_JSON(TO_JSON_STRING(raw_payload)), '$.features')) AS feature),
 parsed AS(
     SELECT
         --id
@@ -85,6 +84,16 @@ quality_checked AS(
         FROM parsed
         WHERE quake_id IS NOT NULL 
         AND magnitude IS NOT NULL
+),
+deduplicated AS (
+    SELECT * EXCEPT(row_num)
+    FROM (
+        SELECT *,
+               ROW_NUMBER() OVER(PARTITION BY quake_id ORDER BY ingested_at DESC) as row_num
+        FROM quality_checked
+    )
+    WHERE row_num = 1
 )
+SELECT * FROM deduplicated
 
-SELECT * FROM quality_checked
+
