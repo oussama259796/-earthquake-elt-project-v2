@@ -77,9 +77,9 @@ def fetch_earthquakes():
             raise
         
 def load_to_bronze(client , raw_data):
-    if not raw_data:
-        logger.error("❌ No data received to load into Bronze")
-        return
+    
+    if not raw_data :
+        raise ValueError("No earthquake features received from API")
 
     rows = [{
         'raw_payload': raw_data,
@@ -107,6 +107,6 @@ def ingest():
         logger.info("✅ Pipeline completed successfully")
     except Exception as e:
         logger.error(f"ngestion pipeline failed: {e}")
-
+        raise
 if __name__ == "__main__":
     ingest()

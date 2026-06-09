@@ -12,3 +12,8 @@ wheels/
 gcp-key.json
 
 .env
+gcp-key.json
+keys 
+*.json
+
+logs
