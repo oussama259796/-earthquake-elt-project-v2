@@ -181,9 +181,7 @@ dbt_transformations (DbtTaskGroup via Cosmos)
 **Schedule:** `@hourly`
 **Retries:** 3 × 5 min delay
 
-<p align="center">
-  <img src="./assets/airflow.png" width="900" alt="Airflow DAG">
-</p>
+![Airflow DAG](./assets/airflow.png)
 ---
 
 ## The Hardest Bug 🐛
@@ -289,10 +287,7 @@ Built with Looker Studio, connected directly to `fct_earthquakes_enriched`:
 - Global map with magnitude-based color coding
 - Filters by region, magnitude category, time
 
-<p align="center">
-  <img src="./assets/dashboard.png" width="900" alt="Looker Studio dashboard">
-</p>
-
+![Dashboard](./assets/dashboard.png)
 ---
 
 ## Key Design Decisions
